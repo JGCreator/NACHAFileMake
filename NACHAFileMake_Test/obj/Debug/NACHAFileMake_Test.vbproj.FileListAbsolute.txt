@@ -1,0 +1,26 @@
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.pdb
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\nunit.framework.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.vbprojResolveAssemblyReference.cache
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.Resources.resources
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.vbproj.GenerateResource.Cache
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake_Test.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\nunit.framework.dll
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\bin\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.vbprojResolveAssemblyReference.cache
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.Resources.resources
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.vbproj.GenerateResource.Cache
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHAFileMake\NACHAFileMake_Test\obj\Debug\NACHAFileMake_Test.pdb

@@ -1,0 +1,13 @@
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHA File Make.exe
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\nunit.framework.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHA File Make.pdb
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHA File Make.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHA File Make_Test.vbprojResolveAssemblyReference.cache
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHA_File_Make_Test.Resources.resources
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHA File Make_Test.vbproj.GenerateResource.Cache
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.pdb
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\bin\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.dll
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.xml
+C:\Sandbox\NACHA File Make\NACHA File Make_Test\obj\Debug\NACHAFileMake_Test.pdb

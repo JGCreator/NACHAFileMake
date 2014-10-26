@@ -1,0 +1,20 @@
+C:\Sandbox\NACHA File Make\NACHA File Make\bin\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHA File Make\NACHA File Make\bin\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHA File Make\NACHA File Make\bin\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.frmConfiguration.resources
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.frmMain.resources
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.Resources.resources
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.vbproj.GenerateResource.Cache
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHA File Make\NACHA File Make\obj\x86\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake\bin\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHAFileMake\NACHAFileMake\bin\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake\bin\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.frmConfiguration.resources
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.frmMain.resources
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.Resources.resources
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.vbproj.GenerateResource.Cache
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.exe
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.xml
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.pdb
