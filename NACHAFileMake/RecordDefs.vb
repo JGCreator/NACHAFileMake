@@ -156,7 +156,7 @@ Public Class BatchHeader
     Private dt_DescDate As String = System.DateTime.Now.ToString("yyMMdd")
     Private str_reserved As String = "   "
     Private str_OrigStatusCode As String = "1"
-    Private str_ClassCode As String = "PPD"
+    Private str_ClassCode As String = "CCD"
 
     Private int_ServiceCode As Integer
     ''' <summary>
@@ -190,7 +190,7 @@ Public Class BatchHeader
             Return str_CompanyName
         End Get
         Set(value As String)
-            str_CompanyName = value.PadLeft(16, " ")
+            str_CompanyName = value.PadRight(16, " ")
         End Set
     End Property
 
@@ -206,7 +206,7 @@ Public Class BatchHeader
             Return str_UserData
         End Get
         Set(value As String)
-            str_UserData = value.PadLeft(20, " ")
+            str_UserData = value.PadRight(20, " ")
         End Set
     End Property
 
@@ -242,7 +242,7 @@ Public Class BatchHeader
             Return str_EntryDesc
         End Get
         Set(value As String)
-            str_EntryDesc = value.PadLeft(10, " ")
+            str_EntryDesc = value.PadRight(10, " ")
         End Set
     End Property
 
@@ -325,9 +325,9 @@ Public Class BatchDetail
 
 #Region "Instance Vars"
 
-    <VBFixedString(1)> Private Const int_addenda As Integer = 0
+    Private Const int_addenda As Integer = 0
 
-    <VBFixedString(2)> Private str_TransCode As String
+    Private str_TransCode As String
     ''' <summary>
     ''' Two digit code identifying the account type at the receiving financial institution
     ''' </summary>
@@ -343,7 +343,7 @@ Public Class BatchDetail
         End Set
     End Property
 
-    <VBFixedString(8)> Private str_ReceiverRouting As String
+    Private str_ReceiverRouting As String
     ''' <summary>
     ''' Transit routing number of the receiver’s financial institution
     ''' </summary>
@@ -359,7 +359,7 @@ Public Class BatchDetail
         End Set
     End Property
 
-    <VBFixedString(1)> Private str_CheckDigit As String
+    Private str_CheckDigit As String
     ''' <summary>
     ''' The ninth digits of the receiving financial institutions transit routing number
     ''' </summary>
@@ -375,7 +375,7 @@ Public Class BatchDetail
         End Set
     End Property
 
-    <VBFixedString(17)> Private str_ReceiverAcct As String
+    Private str_ReceiverAcct As String
     ''' <summary>
     ''' Receiver’s account number at their financial institution
     ''' </summary>
@@ -391,7 +391,7 @@ Public Class BatchDetail
         End Set
     End Property
 
-    <VBFixedString(10)> Private str_Amount As String
+    Private str_Amount As String
     ''' <summary>
     ''' Transaction amount in dollars
     ''' </summary>
@@ -403,11 +403,13 @@ Public Class BatchDetail
             Return str_Amount
         End Get
         Set(value As String)
-            str_Amount = value
+            If value < 100000000.0 Then
+                str_Amount = value
+            End If
         End Set
     End Property
 
-    <VBFixedString(15)> Private str_IndividualID As String
+    Private str_IndividualID As String
     ''' <summary>
     ''' Receiver’s identification number
     ''' </summary>
@@ -423,7 +425,7 @@ Public Class BatchDetail
         End Set
     End Property
 
-    <VBFixedString(22)> Private str_IndividualName As String
+    Private str_IndividualName As String
     ''' <summary>
     ''' Name of receiver
     ''' </summary>
@@ -435,13 +437,13 @@ Public Class BatchDetail
             Return str_IndividualName
         End Get
         Set(value As String)
-            str_IndividualName = value
+            str_IndividualName = value.PadRight(22, " ")
         End Set
     End Property
 
-    <VBFixedString(2)> Private Const str_Filler As String = "  "
+    Private Const str_Filler As String = "  "
 
-    <VBFixedString(15)> Private str_TraceNumber As String
+    Private str_TraceNumber As String
     Private Property trace_number As String
         Get
             Return str_TraceNumber
@@ -452,6 +454,22 @@ Public Class BatchDetail
     End Property
 
 #End Region
+
+    Public Overrides Function ToString() As String
+        Dim sb As New StringBuilder()
+        sb.Append(rec_type)
+        sb.Append(transaction_code)
+        sb.Append(receiver_routing)
+        sb.Append(check_digit)
+        sb.Append(receiver_acct)
+        sb.Append(amount)
+        sb.Append(individual_ID)
+        sb.Append(individual_name)
+        sb.Append(str_Filler)
+        sb.Append("0")
+        sb.Append(trace_number)
+        Return sb.ToString
+    End Function
 
 End Class
 

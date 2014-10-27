@@ -22,7 +22,7 @@ Public Class WorkerClass
         ' try to open the registry key
         Try
             Dim reg As RegistryKey = Registry.LocalMachine
-            reg = reg.OpenSubKey("SOFTWARE\MBA\mbaNMake_file")
+            reg = reg.OpenSubKey("SOFTWARE\NMake_file")
 
             ' if the open failed the key mus not exist 
             If reg Is Nothing Then
@@ -45,9 +45,8 @@ Public Class WorkerClass
     Public Function create_set_key(ByVal file_path As String, Optional debug As Boolean = False) As String
         Try
             Dim reg As RegistryKey = Registry.LocalMachine.OpenSubKey("SOFTWARE", True)
-            reg = reg.CreateSubKey("MBA\mbaNMake_file", RegistryKeyPermissionCheck.ReadWriteSubTree)
-            'reg.OpenSubKey("MBA\mbaNMake_file", True)
-
+            reg = reg.CreateSubKey("NMake_file", RegistryKeyPermissionCheck.ReadWriteSubTree)
+            
             reg.SetValue("path", file_path)
             Return file
         Catch ex As Exception

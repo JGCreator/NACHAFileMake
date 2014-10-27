@@ -26,6 +26,32 @@ Public Class frmMain
     Dim output As NACHAout
 
 #Region "Methods"
+
+    Private Sub frmMain_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
+        worker = New WorkerClass
+
+        ' get a configuration object
+        config = worker.deserializeConfig()
+        If config Is Nothing Then
+            frmconfig = New frmConfiguration(Me)
+            frmconfig.Show()
+        Else
+            populateOutput(Me.config)
+        End If
+
+
+
+        Dim file_path As String
+        Try
+            file_path = worker.open_reg()
+            ex_model = New ExcelInput_Model(file_path)
+        Catch ex As Exception
+            ex_model = New ExcelInput_Model()
+            worker.create_set_key(ex_model.file_location)
+        End Try
+
+    End Sub
+
     'Public Sub New(ByVal config As Configuration, ByVal exModel As ExcelInput_Model)
     '    InitializeComponent()
     '    'Me.config = config
@@ -33,10 +59,14 @@ Public Class frmMain
     'End Sub
 
 
-    Private Sub sub_group_search(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.Leave
+    Private Sub sub_group_search(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGo.Click
 
         Dim file_values As RowValues = ex_model.find_group(TextBox1.Text)
-        Label5.Text = file_values.str_group_name
+        If Not String.IsNullOrWhiteSpace(file_values.str_group_name) Then
+            Label5.Text = file_values.str_group_name
+            enableForm()
+        End If
+
 
 
 
@@ -88,31 +118,6 @@ Public Class frmMain
 
     'End Sub
 
-    Private Sub frmMain_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-        worker = New WorkerClass
-
-        ' get a configuration object
-        config = worker.deserializeConfig()
-        If config Is Nothing Then
-            frmconfig = New frmConfiguration(Me)
-            frmconfig.Show()
-        Else
-            populateOutput(Me.config)
-        End If
-
-
-
-        Dim file_path As String
-        Try
-            file_path = worker.open_reg()
-            ex_model = New ExcelInput_Model(file_path)
-        Catch ex As Exception
-            ex_model = New ExcelInput_Model()
-            worker.create_set_key(ex_model.file_location)
-        End Try
-
-    End Sub
-
     Public Sub populateOutput(ByVal config As Configuration)
         ' create object of RecordDefs
         output = New NACHAout
@@ -149,7 +154,7 @@ Public Class frmMain
         output.bDepositControl.service_class = "220"
     End Sub
 
-    Private Sub TextBox2_Leave(sender As System.Object, e As System.EventArgs) Handles TextBox2.Leave
+    Private Sub TextBox2_Leave(sender As System.Object, e As System.EventArgs)
         ' validate the value in the amount field and then add it to the RecordDefs object
 
     End Sub
@@ -189,6 +194,53 @@ Public Class frmMain
     Private Sub SettingsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub txtAmount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAmount.KeyPress
+        If (Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) AndAlso Not e.KeyChar = ".") Then
+            e.Handled = True
+        End If
+
+        If (e.KeyChar = ".") AndAlso (CType(sender, TextBox).Text.IndexOf(".") > -1) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub enableForm()
+        txtAmount.Enabled = True
+        txtBatchNote.Enabled = True
+        rbToClient.Enabled = True
+        rbToVendor.Enabled = True
+        btnMake.Enabled = True
+        dtpCollection.Enabled = True
+        dtpDisbursement.Enabled = True
+    End Sub
+
+    Private Sub disableForm()
+        txtAmount.Enabled = False
+        txtBatchNote.Enabled = False
+        rbToClient.Enabled = False
+        rbToVendor.Enabled = False
+        btnMake.Enabled = False
+        dtpCollection.Enabled = False
+        dtpDisbursement.Enabled = False
+    End Sub
+
+    Private Sub txtAmount_Leave(sender As Object, e As EventArgs) Handles txtAmount.Leave
+        If Not txtAmount.Text.IndexOf(".") > -1 Then
+            Select Case True
+                Case txtAmount.Text.Length < 9
+                    txtAmount.Text &= ".00"
+                Case txtAmount.Text.Length = 9
+                    Dim dollars As String = txtAmount.Text.Substring(0, 8)
+                    Dim cents As String = txtAmount.Text.Substring(8, 1)
+                    txtAmount.Text = String.Format("{0}.{1}0", dollars, cents)
+                Case txtAmount.Text.Length = 10
+                    Dim dollars As String = txtAmount.Text.Substring(0, 8)
+                    Dim cents As String = txtAmount.Text.Substring(8, 2)
+                    txtAmount.Text = String.Format("{0}.{1}", dollars, cents)
+            End Select
+        End If
+    End Sub
 End Class
 
 
@@ -201,14 +253,16 @@ Public Class NACHAout
     Dim records() As FileRec
 
     Friend fHeader As FileHeader
-    Friend fControl As FileControl
-    Friend bWithdrawHeader As BatchHeader
-    Friend bWithdrawControl As BatchControl
-    Friend bWithdrawDetail As BatchDetail
-    Friend bDepositHeader As BatchHeader
-    Friend bDepositControl As BatchControl
-    Friend bDepositDetail As BatchDetail
 
+    Friend bWithdrawHeader As BatchHeader
+    Friend bWithdrawDetail As BatchDetail
+    Friend bWithdrawControl As BatchControl
+
+    Friend bDepositHeader As BatchHeader
+    Friend bDepositDetail As BatchDetail
+    Friend bDepositControl As BatchControl
+
+    Friend fControl As FileControl
 #End Region
 
 #Region "Methods"
@@ -230,10 +284,6 @@ Public Class NACHAout
 #End Region
 
 End Class
-
-Public Structure OutputStruct
-    
-End Structure
 
 Public Structure RowValues
     Dim int_group_nbr As Integer

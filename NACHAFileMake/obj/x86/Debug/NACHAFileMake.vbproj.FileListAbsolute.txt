@@ -18,3 +18,4 @@ C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.vbproj.Genera
 C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.exe
 C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.xml
 C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.pdb
+C:\Sandbox\NACHAFileMake\NACHAFileMake\obj\x86\Debug\NACHAFileMake.frmSettings.resources
