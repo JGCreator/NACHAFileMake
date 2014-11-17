@@ -52,7 +52,8 @@ Public Class FileHeader
             ElseIf (value.Length = 10) And (value.First = " ") Then
                 str_ImmDest = value
             Else
-                Throw New Exception("Immediate Destination Must be a String.")
+                Throw New Exception(String.Format(
+                                    "The financial institution routing number (Immediate Destination) is the wrong length." & vbCrLf & "Expected 9 but was {0}.", value.Length))
             End If
         End Set
     End Property
@@ -72,7 +73,7 @@ Public Class FileHeader
             If value.Length = 10 Then
                 str_ImmOrig = value
             Else
-                Throw New Exception("Immediate Origin is Invalid.")
+                Throw New Exception(String.Format("The company tax id (Immediate Origin) is the wrong length." & vbCrLf & "Expected 10 but was {0}", value.Length))
             End If
         End Set
     End Property
@@ -268,10 +269,10 @@ Public Class BatchHeader
             Return str_OrigFinancialInst
         End Get
         Set(value As String)
-            If value.Length = 8 Then
-                str_OrigFinancialInst = value
+            If value.Length = 9 Then
+                str_OrigFinancialInst = value.Substring(0, 8)
             Else
-                Throw New Exception(String.Format("The Originating Financial Institution ID is invalid, because it is the wrong length. Expected 8 but was {0}", value.Length))
+                Throw New Exception(String.Format("The Originating Financial Institution ID is invalid, because it is the wrong length. Expected 9 but was {0}", value.Length))
             End If
         End Set
     End Property
@@ -355,7 +356,13 @@ Public Class BatchDetail
             Return str_ReceiverRouting
         End Get
         Set(value As String)
-            str_ReceiverRouting = value
+            If value.Length = 8 Then
+                str_ReceiverRouting = value
+            ElseIf value.Length = 9 Then
+                str_ReceiverRouting = value.Substring(0, 8)
+            Else
+                Throw New Exception(String.Format("The value given for Receiver Routing number is an incorrect length. Expected 8 or 9 but was {0}", value.Length))
+            End If
         End Set
     End Property
 
@@ -371,7 +378,11 @@ Public Class BatchDetail
             Return str_CheckDigit
         End Get
         Set(value As String)
-            str_CheckDigit = value
+            If value.Length = 1 Then
+                str_CheckDigit = value
+            Else
+                Throw New Exception("The value given for Check Digit is greater than one.")
+            End If
         End Set
     End Property
 
@@ -387,7 +398,7 @@ Public Class BatchDetail
             Return str_ReceiverAcct
         End Get
         Set(value As String)
-            str_ReceiverAcct = value
+            str_ReceiverAcct = value.PadRight(17, " ")
         End Set
     End Property
 
@@ -403,9 +414,7 @@ Public Class BatchDetail
             Return str_Amount
         End Get
         Set(value As String)
-            If value < 100000000.0 Then
-                str_Amount = value
-            End If
+                str_Amount = value.PadLeft(10, "0")
         End Set
     End Property
 
@@ -421,7 +430,7 @@ Public Class BatchDetail
             Return str_IndividualID
         End Get
         Set(value As String)
-            str_IndividualID = value
+            str_IndividualID = value.PadRight(15, " ")
         End Set
     End Property
 
@@ -444,7 +453,7 @@ Public Class BatchDetail
     Private Const str_Filler As String = "  "
 
     Private str_TraceNumber As String
-    Private Property trace_number As String
+    Public Property trace_number As String
         Get
             Return str_TraceNumber
         End Get
@@ -509,7 +518,7 @@ Public Class BatchControl
             Return str_EntryCount
         End Get
         Set(value As String)
-            str_EntryCount = value
+            str_EntryCount = value.PadLeft(6, "0")
         End Set
     End Property
 
@@ -525,7 +534,7 @@ Public Class BatchControl
             Return str_EntryHash
         End Get
         Set(value As String)
-            str_EntryHash = value
+            str_EntryHash = value.PadLeft(10, "0")
         End Set
     End Property
 
@@ -541,7 +550,7 @@ Public Class BatchControl
             Return str_TotDebitAmount
         End Get
         Set(value As String)
-            str_TotDebitAmount = value
+            str_TotDebitAmount = value.PadLeft(12, "0")
         End Set
     End Property
 
@@ -557,7 +566,7 @@ Public Class BatchControl
             Return str_TotCreditAmount
         End Get
         Set(value As String)
-            str_TotCreditAmount = value
+            str_TotCreditAmount = value.PadLeft(12, "0")
         End Set
     End Property
 
@@ -573,7 +582,11 @@ Public Class BatchControl
             Return str_CompanyID
         End Get
         Set(value As String)
-            str_CompanyID = value
+            If value.Length = 10 Then
+                str_CompanyID = value
+            Else
+                Throw New Exception(String.Format("The value given for Company ID is the incorrect length. Expected 10 but was {0}", value.Length))
+            End If
         End Set
     End Property
 
@@ -593,6 +606,11 @@ Public Class BatchControl
         End Get
         Set(value As String)
             str_OrigFinancialID = value
+            If value.Length = 9 Then
+                str_OrigFinancialID = value.Substring(0, 8)
+            Else
+                Throw New Exception(String.Format("The Originating Financial Institution ID is invalid, because it is the wrong length. Expected 9 but was {0}", value.Length))
+            End If
         End Set
     End Property
 
@@ -611,7 +629,24 @@ Public Class BatchControl
             str_BatchNumber = value
         End Set
     End Property
+
 #End Region
+
+    Public Overrides Function ToString() As String
+        Dim sb As New StringBuilder
+        sb.Append(rec_type)
+        sb.Append(service_class)
+        sb.Append(entry_count)
+        sb.Append(entry_hash)
+        sb.Append(tot_debit_amount)
+        sb.Append(tot_credit_amount)
+        sb.Append(company_ID)
+        sb.Append(str_MsgAuth)
+        sb.Append(str_reserved)
+        sb.Append(originating_financial_ID)
+        sb.Append(batch_number)
+        Return sb.ToString
+    End Function
 
 End Class
 
@@ -629,7 +664,7 @@ Public Class FileControl
             Return str_BatchCount
         End Get
         Set(value As String)
-            str_BatchCount = value
+            str_BatchCount = value.PadLeft(6, "0")
         End Set
     End Property
 
@@ -639,7 +674,7 @@ Public Class FileControl
             Return str_BlockCount
         End Get
         Set(value As String)
-            str_BlockCount = value
+            str_BlockCount = value.PadLeft(6, "0")
         End Set
     End Property
 
@@ -649,7 +684,7 @@ Public Class FileControl
             Return str_EntryCount
         End Get
         Set(value As String)
-            str_EntryCount = value
+            str_EntryCount = value.PadLeft(8, "0")
         End Set
     End Property
 
@@ -659,7 +694,7 @@ Public Class FileControl
             Return str_EntryHash
         End Get
         Set(value As String)
-            str_EntryHash = value
+            str_EntryHash = value.PadLeft(10, "0")
         End Set
     End Property
 
@@ -669,7 +704,7 @@ Public Class FileControl
             Return str_TotDebitAmount
         End Get
         Set(value As String)
-            str_TotDebitAmount = value
+            str_TotDebitAmount = value.PadLeft(12, "0")
         End Set
     End Property
 
@@ -679,10 +714,32 @@ Public Class FileControl
             Return str_TotCreditAmount
         End Get
         Set(value As String)
-            str_TotCreditAmount = value
+            str_TotCreditAmount = value.PadLeft(12, "0")
         End Set
     End Property
 
     <VBFixedString(39)> Private str_Reserved As String = String.Format("{0,38}", " ")
 #End Region
+
+    Public Overrides Function ToString() As String
+        Dim sb As New StringBuilder
+        sb.Append(rec_type)
+        sb.Append(batch_count)
+        sb.Append(block_count)
+        sb.Append(entry_count)
+        sb.Append(entry_hash)
+        sb.Append(tot_debit_amount)
+        sb.Append(tot_credit_amount)
+        sb.Append(str_Reserved)
+        Return sb.ToString
+    End Function
+End Class
+
+Public Class BlockFiller
+
+    Dim filler As String = "9".PadLeft(94, "9")
+    Public Overrides Function ToString() As String
+        Return filler
+    End Function
+
 End Class

@@ -16,20 +16,80 @@ Public Class frmConfiguration
     End Sub
 
     Private Sub Configuration_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
+        ' populate window fields with values from configuration object
     End Sub
 
+    ''' <summary>
+    ''' Check that all the values have been entered. If so, populate output and exit.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        config.immediateDest = txtFinancialInstRouting.Text
-        config.immediateDestName = txtFinancialInstName.Text
-        config.immediateOrig = txtTaxID.Text
-        config.immediateOrigName = txtCompanyName.Text
-        config.companyEntryDesc = txtTransDesc.Text
-        main.populateOutput(config)
-        Dim wk As New WorkerClass
-        wk.serializeConfig(config)
-        Me.Close()
+        Try
+            checkFormInputs()
+
+            main.populateOutput(config)
+            Dim wk As New WorkerClass
+            wk.serializeConfig(config)
+            Me.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
+
+    ''' <summary>
+    ''' Confirm that values have been entered before closing
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub frmConfiguration_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ' make sure that values have been entered before closing
+        Try
+            checkFormInputs()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+            e.Cancel = True
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub checkFormInputs()
+        If Not String.IsNullOrWhiteSpace(txtCompanyName.Text) Then
+            config.immediateOrigName = txtCompanyName.Text
+        Else
+            Throw New Exception("Company Name Value is Required.")
+        End If
+
+        If Not String.IsNullOrWhiteSpace(txtTaxID.Text) Then
+            config.immediateOrig = txtTaxID.Text
+        Else
+            Throw New Exception("Tax ID Value is Required.")
+        End If
+
+        If Not String.IsNullOrWhiteSpace(txtFinancialInstName.Text) Then
+            config.immediateDestName = txtFinancialInstName.Text
+        Else
+            Throw New Exception("Financial Institution Name Value is Required.")
+        End If
+
+        If Not String.IsNullOrWhiteSpace(txtFinancialInstRouting.Text) Then
+            config.immediateDest = txtFinancialInstRouting.Text
+        Else
+            Throw New Exception("Financial Institution Routing Value is Required.")
+        End If
+
+        If Not String.IsNullOrWhiteSpace(txtTransDesc.Text) Then
+            config.companyEntryDesc = txtTransDesc.Text
+        Else
+            Throw New Exception("Transaction Description Value is Required")
+        End If
+    End Sub
+
 End Class
 
 <System.Serializable()>

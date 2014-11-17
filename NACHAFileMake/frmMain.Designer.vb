@@ -147,6 +147,7 @@ Partial Class frmMain
         'rbToClient
         '
         Me.rbToClient.AutoSize = True
+        Me.rbToClient.Checked = True
         Me.rbToClient.Enabled = False
         Me.rbToClient.Location = New System.Drawing.Point(95, 109)
         Me.rbToClient.Name = "rbToClient"
@@ -164,7 +165,6 @@ Partial Class frmMain
         Me.rbToVendor.Name = "rbToVendor"
         Me.rbToVendor.Size = New System.Drawing.Size(59, 17)
         Me.rbToVendor.TabIndex = 13
-        Me.rbToVendor.TabStop = True
         Me.rbToVendor.Text = "Vendor"
         Me.rbToVendor.UseVisualStyleBackColor = True
         '

@@ -124,7 +124,7 @@ Partial Class frmConfiguration
         Me.Button1.Text = "Done"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Configuration
+        'frmConfiguration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -140,7 +140,8 @@ Partial Class frmConfiguration
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtCompanyName)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "Configuration"
+        Me.Name = "frmConfiguration"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Configuration"
         Me.ResumeLayout(False)
         Me.PerformLayout()
