@@ -17,6 +17,17 @@ Public Class frmConfiguration
 
     Private Sub Configuration_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         ' populate window fields with values from configuration object
+        Dim wkr As New WorkerClass
+        Try
+            Dim config As Configuration = wkr.deserializeConfig()
+            txtCompanyName.Text = config.ImmediateOriginName
+            txtFinancialInstName.Text = config.ImmediateDestinationName
+            txtFinancialInstRouting.Text = config.ImmediateDestination
+            txtTaxID.Text = config.ImmediateOrigin
+        Catch ex As Exception
+            MessageBox.Show("The configuration setting either do not exist or could not be retrieved.")
+        End Try
+
     End Sub
 
     ''' <summary>
@@ -34,7 +45,7 @@ Public Class frmConfiguration
             wk.serializeConfig(config)
             Me.Close()
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show(String.Format("[frmConfig Button1_Click] {0} :: {1}", ex.Message, ex.StackTrace))
         End Try
     End Sub
 
@@ -49,7 +60,7 @@ Public Class frmConfiguration
         Try
             checkFormInputs()
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show(String.Format("[frmConfig FormClosing] {0} :: {1}", ex.Message, ex.StackTrace))
             e.Cancel = True
         End Try
     End Sub
@@ -81,12 +92,6 @@ Public Class frmConfiguration
             config.immediateDest = txtFinancialInstRouting.Text
         Else
             Throw New Exception("Financial Institution Routing Value is Required.")
-        End If
-
-        If Not String.IsNullOrWhiteSpace(txtTransDesc.Text) Then
-            config.companyEntryDesc = txtTransDesc.Text
-        Else
-            Throw New Exception("Transaction Description Value is Required")
         End If
     End Sub
 
@@ -150,17 +155,17 @@ Public Class Configuration
         End Get
     End Property
 
-    ' company entry description
-    Friend companyEntryDesc As String
-    ''' <summary>
-    ''' A user defined, 10 digit description of the transaction. ex. Payroll
-    ''' </summary>
-    ''' <value></value>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public ReadOnly Property CompanyEntryDescription As String
-        Get
-            Return companyEntryDesc
-        End Get
-    End Property
+    '' company entry description
+    'Friend companyEntryDesc As String
+    ' ''' <summary>
+    ' ''' A user defined, 10 digit description of the transaction. ex. Payroll
+    ' ''' </summary>
+    ' ''' <value></value>
+    ' ''' <returns></returns>
+    ' ''' <remarks></remarks>
+    'Public ReadOnly Property CompanyEntryDescription As String
+    '    Get
+    '        Return companyEntryDesc
+    '    End Get
+    'End Property
 End Class

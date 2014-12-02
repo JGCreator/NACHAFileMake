@@ -49,13 +49,15 @@ Partial Class frmMain
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnGo = New System.Windows.Forms.Button()
         Me.txtAmount = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtEntryDescription = New System.Windows.Forms.TextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(11, 45)
+        Me.TextBox1.Location = New System.Drawing.Point(22, 45)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(76, 20)
         Me.TextBox1.TabIndex = 0
@@ -64,16 +66,16 @@ Partial Class frmMain
         '
         Me.dtpCollection.Checked = False
         Me.dtpCollection.Enabled = False
-        Me.dtpCollection.Location = New System.Drawing.Point(11, 147)
+        Me.dtpCollection.Location = New System.Drawing.Point(22, 159)
         Me.dtpCollection.Name = "dtpCollection"
-        Me.dtpCollection.Size = New System.Drawing.Size(200, 20)
-        Me.dtpCollection.TabIndex = 1
+        Me.dtpCollection.Size = New System.Drawing.Size(178, 20)
+        Me.dtpCollection.TabIndex = 4
         Me.ToolTip1.SetToolTip(Me.dtpCollection, "The date for deposit into clearing house account.")
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 29)
+        Me.Label1.Location = New System.Drawing.Point(19, 29)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 2
@@ -82,7 +84,7 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 131)
+        Me.Label2.Location = New System.Drawing.Point(19, 143)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(149, 13)
         Me.Label2.TabIndex = 3
@@ -92,16 +94,16 @@ Partial Class frmMain
         '
         Me.dtpDisbursement.Checked = False
         Me.dtpDisbursement.Enabled = False
-        Me.dtpDisbursement.Location = New System.Drawing.Point(11, 186)
+        Me.dtpDisbursement.Location = New System.Drawing.Point(22, 198)
         Me.dtpDisbursement.Name = "dtpDisbursement"
-        Me.dtpDisbursement.Size = New System.Drawing.Size(200, 20)
-        Me.dtpDisbursement.TabIndex = 4
+        Me.dtpDisbursement.Size = New System.Drawing.Size(178, 20)
+        Me.dtpDisbursement.TabIndex = 5
         Me.ToolTip1.SetToolTip(Me.dtpDisbursement, "The date for disbursement to vendor or client account.")
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 170)
+        Me.Label3.Location = New System.Drawing.Point(19, 182)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(167, 13)
         Me.Label3.TabIndex = 5
@@ -110,7 +112,7 @@ Partial Class frmMain
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 69)
+        Me.Label4.Location = New System.Drawing.Point(19, 68)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 13)
         Me.Label4.TabIndex = 6
@@ -119,7 +121,7 @@ Partial Class frmMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(88, 69)
+        Me.Label5.Location = New System.Drawing.Point(95, 68)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(71, 13)
         Me.Label5.TabIndex = 7
@@ -128,17 +130,17 @@ Partial Class frmMain
         'btnMake
         '
         Me.btnMake.Enabled = False
-        Me.btnMake.Location = New System.Drawing.Point(217, 144)
+        Me.btnMake.Location = New System.Drawing.Point(22, 302)
         Me.btnMake.Name = "btnMake"
-        Me.btnMake.Size = New System.Drawing.Size(76, 62)
+        Me.btnMake.Size = New System.Drawing.Size(200, 33)
         Me.btnMake.TabIndex = 8
-        Me.btnMake.Text = "Make"
+        Me.btnMake.Text = "Save File"
         Me.btnMake.UseVisualStyleBackColor = True
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(9, 92)
+        Me.Label6.Location = New System.Drawing.Point(19, 104)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(52, 13)
         Me.Label6.TabIndex = 11
@@ -149,10 +151,10 @@ Partial Class frmMain
         Me.rbToClient.AutoSize = True
         Me.rbToClient.Checked = True
         Me.rbToClient.Enabled = False
-        Me.rbToClient.Location = New System.Drawing.Point(95, 109)
+        Me.rbToClient.Location = New System.Drawing.Point(106, 121)
         Me.rbToClient.Name = "rbToClient"
         Me.rbToClient.Size = New System.Drawing.Size(51, 17)
-        Me.rbToClient.TabIndex = 12
+        Me.rbToClient.TabIndex = 3
         Me.rbToClient.TabStop = True
         Me.rbToClient.Text = "Client"
         Me.rbToClient.UseVisualStyleBackColor = True
@@ -161,7 +163,7 @@ Partial Class frmMain
         '
         Me.rbToVendor.AutoSize = True
         Me.rbToVendor.Enabled = False
-        Me.rbToVendor.Location = New System.Drawing.Point(152, 109)
+        Me.rbToVendor.Location = New System.Drawing.Point(163, 121)
         Me.rbToVendor.Name = "rbToVendor"
         Me.rbToVendor.Size = New System.Drawing.Size(59, 17)
         Me.rbToVendor.TabIndex = 13
@@ -173,7 +175,7 @@ Partial Class frmMain
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(305, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(240, 24)
         Me.MenuStrip1.TabIndex = 14
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -187,13 +189,13 @@ Partial Class frmMain
         'EditInputToolStripMenuItem
         '
         Me.EditInputToolStripMenuItem.Name = "EditInputToolStripMenuItem"
-        Me.EditInputToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.EditInputToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.EditInputToolStripMenuItem.Text = "Edit Input"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SettingsToolStripMenuItem.Text = "Configuration"
         '
         'HelpToolStripMenuItem
@@ -212,9 +214,9 @@ Partial Class frmMain
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 248)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 345)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(305, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(240, 22)
         Me.StatusStrip1.TabIndex = 15
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -227,15 +229,16 @@ Partial Class frmMain
         'txtBatchNote
         '
         Me.txtBatchNote.Enabled = False
-        Me.txtBatchNote.Location = New System.Drawing.Point(12, 225)
+        Me.txtBatchNote.Location = New System.Drawing.Point(22, 237)
+        Me.txtBatchNote.MaxLength = 20
         Me.txtBatchNote.Name = "txtBatchNote"
-        Me.txtBatchNote.Size = New System.Drawing.Size(282, 20)
-        Me.txtBatchNote.TabIndex = 16
+        Me.txtBatchNote.Size = New System.Drawing.Size(135, 20)
+        Me.txtBatchNote.TabIndex = 6
         '
         'lbl_BatchNote
         '
         Me.lbl_BatchNote.AutoSize = True
-        Me.lbl_BatchNote.Location = New System.Drawing.Point(8, 209)
+        Me.lbl_BatchNote.Location = New System.Drawing.Point(19, 221)
         Me.lbl_BatchNote.Name = "lbl_BatchNote"
         Me.lbl_BatchNote.Size = New System.Drawing.Size(61, 13)
         Me.lbl_BatchNote.TabIndex = 17
@@ -244,7 +247,7 @@ Partial Class frmMain
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(92, 92)
+        Me.Label7.Location = New System.Drawing.Point(103, 104)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(67, 13)
         Me.Label7.TabIndex = 18
@@ -252,27 +255,46 @@ Partial Class frmMain
         '
         'btnGo
         '
-        Me.btnGo.Location = New System.Drawing.Point(93, 43)
+        Me.btnGo.Location = New System.Drawing.Point(104, 43)
         Me.btnGo.Name = "btnGo"
         Me.btnGo.Size = New System.Drawing.Size(32, 23)
-        Me.btnGo.TabIndex = 19
+        Me.btnGo.TabIndex = 1
         Me.btnGo.Text = "Go"
         Me.btnGo.UseVisualStyleBackColor = True
         '
         'txtAmount
         '
         Me.txtAmount.Enabled = False
-        Me.txtAmount.Location = New System.Drawing.Point(11, 108)
+        Me.txtAmount.Location = New System.Drawing.Point(22, 120)
         Me.txtAmount.MaxLength = 11
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.Size = New System.Drawing.Size(76, 20)
-        Me.txtAmount.TabIndex = 20
+        Me.txtAmount.TabIndex = 2
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(19, 260)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(57, 13)
+        Me.Label8.TabIndex = 21
+        Me.Label8.Text = "Entry Note"
+        '
+        'txtEntryDescription
+        '
+        Me.txtEntryDescription.Location = New System.Drawing.Point(22, 276)
+        Me.txtEntryDescription.MaxLength = 10
+        Me.txtEntryDescription.Name = "txtEntryDescription"
+        Me.txtEntryDescription.Size = New System.Drawing.Size(76, 20)
+        Me.txtEntryDescription.TabIndex = 7
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(305, 270)
+        Me.ClientSize = New System.Drawing.Size(240, 367)
+        Me.Controls.Add(Me.txtEntryDescription)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtAmount)
         Me.Controls.Add(Me.btnGo)
         Me.Controls.Add(Me.Label7)
@@ -293,6 +315,8 @@ Partial Class frmMain
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MaximumSize = New System.Drawing.Size(256, 405)
+        Me.MinimumSize = New System.Drawing.Size(256, 405)
         Me.Name = "frmMain"
         Me.Text = "NACHA File Make"
         Me.MenuStrip1.ResumeLayout(False)
@@ -329,5 +353,7 @@ Partial Class frmMain
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents btnGo As System.Windows.Forms.Button
     Friend WithEvents txtAmount As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtEntryDescription As System.Windows.Forms.TextBox
 
 End Class

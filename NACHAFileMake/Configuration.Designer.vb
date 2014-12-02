@@ -30,15 +30,13 @@ Partial Class frmConfiguration
         Me.txtFinancialInstName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtFinancialInstRouting = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtTransDesc = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Location = New System.Drawing.Point(64, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 13)
         Me.Label1.TabIndex = 0
@@ -46,15 +44,16 @@ Partial Class frmConfiguration
         '
         'txtCompanyName
         '
-        Me.txtCompanyName.Location = New System.Drawing.Point(15, 25)
+        Me.txtCompanyName.Location = New System.Drawing.Point(152, 6)
+        Me.txtCompanyName.MaxLength = 23
         Me.txtCompanyName.Name = "txtCompanyName"
-        Me.txtCompanyName.Size = New System.Drawing.Size(100, 20)
+        Me.txtCompanyName.Size = New System.Drawing.Size(147, 20)
         Me.txtCompanyName.TabIndex = 1
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 48)
+        Me.Label2.Location = New System.Drawing.Point(107, 35)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 2
@@ -62,15 +61,16 @@ Partial Class frmConfiguration
         '
         'txtTaxID
         '
-        Me.txtTaxID.Location = New System.Drawing.Point(15, 64)
+        Me.txtTaxID.Location = New System.Drawing.Point(152, 32)
+        Me.txtTaxID.MaxLength = 10
         Me.txtTaxID.Name = "txtTaxID"
-        Me.txtTaxID.Size = New System.Drawing.Size(100, 20)
+        Me.txtTaxID.Size = New System.Drawing.Size(69, 20)
         Me.txtTaxID.TabIndex = 3
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 87)
+        Me.Label3.Location = New System.Drawing.Point(18, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(128, 13)
         Me.Label3.TabIndex = 4
@@ -78,15 +78,16 @@ Partial Class frmConfiguration
         '
         'txtFinancialInstName
         '
-        Me.txtFinancialInstName.Location = New System.Drawing.Point(15, 103)
+        Me.txtFinancialInstName.Location = New System.Drawing.Point(152, 58)
+        Me.txtFinancialInstName.MaxLength = 23
         Me.txtFinancialInstName.Name = "txtFinancialInstName"
-        Me.txtFinancialInstName.Size = New System.Drawing.Size(156, 20)
+        Me.txtFinancialInstName.Size = New System.Drawing.Size(147, 20)
         Me.txtFinancialInstName.TabIndex = 5
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 126)
+        Me.Label4.Location = New System.Drawing.Point(9, 87)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(137, 13)
         Me.Label4.TabIndex = 6
@@ -94,33 +95,18 @@ Partial Class frmConfiguration
         '
         'txtFinancialInstRouting
         '
-        Me.txtFinancialInstRouting.Location = New System.Drawing.Point(15, 142)
+        Me.txtFinancialInstRouting.Location = New System.Drawing.Point(152, 84)
+        Me.txtFinancialInstRouting.MaxLength = 9
         Me.txtFinancialInstRouting.Name = "txtFinancialInstRouting"
-        Me.txtFinancialInstRouting.Size = New System.Drawing.Size(156, 20)
+        Me.txtFinancialInstRouting.Size = New System.Drawing.Size(65, 20)
         Me.txtFinancialInstRouting.TabIndex = 7
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 165)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(94, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Transaction Desc."
-        '
-        'txtTransDesc
-        '
-        Me.txtTransDesc.Location = New System.Drawing.Point(15, 181)
-        Me.txtTransDesc.Name = "txtTransDesc"
-        Me.txtTransDesc.Size = New System.Drawing.Size(115, 20)
-        Me.txtTransDesc.TabIndex = 11
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(136, 179)
+        Me.Button1.Location = New System.Drawing.Point(113, 110)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(136, 23)
-        Me.Button1.TabIndex = 12
+        Me.Button1.Size = New System.Drawing.Size(91, 23)
+        Me.Button1.TabIndex = 8
         Me.Button1.Text = "Done"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -128,10 +114,8 @@ Partial Class frmConfiguration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 212)
+        Me.ClientSize = New System.Drawing.Size(317, 140)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.txtTransDesc)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtFinancialInstRouting)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtFinancialInstName)
@@ -155,7 +139,5 @@ Partial Class frmConfiguration
     Friend WithEvents txtFinancialInstName As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtFinancialInstRouting As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents txtTransDesc As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

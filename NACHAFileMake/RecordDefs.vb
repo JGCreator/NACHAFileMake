@@ -191,7 +191,13 @@ Public Class BatchHeader
             Return str_CompanyName
         End Get
         Set(value As String)
-            str_CompanyName = value.PadRight(16, " ")
+            If value.Length < 16 Then
+                str_CompanyName = value.PadRight(16, " ")
+            ElseIf value.Length = 16 Then
+                str_CompanyName = value
+            Else
+                str_CompanyName = value.Substring(0, 16)
+            End If
         End Set
     End Property
 
@@ -292,7 +298,7 @@ Public Class BatchHeader
             If value.Length <= 7 Then
                 str_BatchNumber = value.PadLeft(7, "0")
             Else
-                str_BatchNumber = value.Substring(value.Length - 1, 7)
+                str_BatchNumber = value.Substring(value.Length - 8, 7)
             End If
         End Set
     End Property
@@ -308,7 +314,7 @@ Public Class BatchHeader
         sb.Append(str_ClassCode)
         sb.Append(str_EntryDesc)
         sb.Append(dt_DescDate)
-        sb.Append(dt_Effective.ToString("yyMMDD"))
+        sb.Append(dt_Effective.ToString("yyMMdd"))
         sb.Append(str_reserved)
         sb.Append(str_OrigStatusCode)
         sb.Append(str_OrigFinancialInst)
@@ -590,8 +596,8 @@ Public Class BatchControl
         End Set
     End Property
 
-    <VBFixedString(19)> Private str_MsgAuth As String = String.Format("{0,18}", " ")
-    <VBFixedString(6)> Private str_reserved As String = String.Format("{0,5}", " ")
+    <VBFixedString(19)> Private str_MsgAuth As String = String.Format("{0,19}", " ")
+    <VBFixedString(6)> Private str_reserved As String = String.Format("{0,6}", " ")
 
     <VBFixedString(8)> Private str_OrigFinancialID As String
     ''' <summary>
@@ -626,7 +632,7 @@ Public Class BatchControl
             Return str_BatchNumber
         End Get
         Set(value As String)
-            str_BatchNumber = value
+            str_BatchNumber = value.PadLeft(7, "0")
         End Set
     End Property
 
@@ -718,7 +724,7 @@ Public Class FileControl
         End Set
     End Property
 
-    <VBFixedString(39)> Private str_Reserved As String = String.Format("{0,38}", " ")
+    <VBFixedString(39)> Private str_Reserved As String = String.Format("{0,39}", " ")
 #End Region
 
     Public Overrides Function ToString() As String
